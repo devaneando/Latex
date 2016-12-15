@@ -1,0 +1,104 @@
+% ·▄▄▄▄  ▄▄▄ . ▌ ▐· ▄▄▄·  ▐ ▄ ▄▄▄ . ▄▄▄·  ▐ ▄ ·▄▄▄▄        
+% ██▪ ██ ▀▄.▀·▪█·█▌▐█ ▀█ •█▌▐█▀▄.▀·▐█ ▀█ •█▌▐███▪ ██ ▪     
+% ▐█· ▐█▌▐▀▀▪▄▐█▐█•▄█▀▀█ ▐█▐▐▌▐▀▀▪▄▄█▀▀█ ▐█▐▐▌▐█· ▐█▌ ▄█▀▄ 
+% ██. ██ ▐█▄▄▌ ███ ▐█ ▪▐▌██▐█▌▐█▄▄▌▐█ ▪▐▌██▐█▌██. ██ ▐█▌.▐▌
+% ▀▀▀▀▀•  ▀▀▀ . ▀   ▀  ▀ ▀▀ █▪ ▀▀▀  ▀  ▀ ▀▀ █▪▀▀▀▀▀•  ▀█▄▀▪
+%
+% creativeWriting.sty
+% Copyright 2016 Eduardo Fernandes <edu.fernandes.pt@gmail.com>
+%
+% Licensed under a Creative Commons Attribution 4.0 International License.
+% See https://creativecommons.org/licenses/by/4.0/
+%
+% Example:
+% \usepackage{creativeWriting}
+%
+
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{creativeWriting}[2016/11/28 creativeWriting]
+
+% Allows the use of conditionals
+\usepackage{ifthen}
+
+\usepackage{multicol}
+\setlength{\columnsep}{2cm}
+
+% Allows image insertion
+\usepackage{graphicx,wrapfig}
+\graphicspath{ {images/} {characters/images/}}
+
+% ●▬▬▬▬▬๑۩ Custom commands ۩๑▬▬▬▬▬●
+
+% Defines the character's name
+% \charName{John Somebody Doe}
+\newcommand{\charName}[1]{\def\@charName{#1}}
+
+% Defines the character's nickname
+% \charName{John Doe}
+\newcommand{\charNickname}[1]{\def\@charNickname{#1}}
+
+% Defines the character's avatar without the extension, the image ued for reference
+% \charAvatar{john-doe}
+\newcommand{\charAvatar}[1]{\def\@charAvatar{#1}}
+
+% Defines the city and date of birth
+% \charBirth{Rio de Janeiro, October 14, 2016}
+\newcommand{\charBirth}[1]{\def\@charBirth{#1}}
+
+% Defines the city and date of death
+% \charBirth{São Paulo, March 28, 2053}
+\newcommand{\charDeath}[1]{\def\@charDeath{#1}}
+
+% Defines the character's abstract
+% \charAbstract{is a violent marauder, ready to kill anyone on sight.}
+\newcommand{\charAbstract}[1]{\def\@charAbstract{#1}}
+
+% Outputs the character's abstract according to the following format
+% \textbf{\@charName} (\textit{\@charBirth} --- \textit{\@charDeath}) \@charAbstract
+\newcommand{\makeCharAbstract}{
+
+	% Prints the section title
+    \ifthenelse{\isundefined\@charNickname}
+		{\chapter{\@charName}}
+		{\chapter{\@charNickname}}
+    % Prints the character's avatar
+    \ifthenelse{\isundefined\@charAvatar}{}{
+        \begin{multicols}{2}      
+            % Prints the abstract
+            \ifthenelse{\isundefined\@charNickname}
+            {\textbf{\@charName} }
+            {\textbf{\@charName} --- \textit{aka \@charNickname} --- }
+            (\ifthenelse{\isundefined\@charBirth}{}{\@charBirth} --- %
+            \ifthenelse{\isundefined\@charDeath}{}{\@charDeath}) %
+            \ifthenelse{\isundefined\@charAbstract}{}{\textit{\@charAbstract}} %   
+            \vfill 
+            \includegraphics[width=5cm]{\@charAvatar}
+        \end{multicols}
+
+    }
+}
+
+% Displays keywords
+\newcommand{\keywords}[1]{
+	\textbf{Palavras chaves}: \textit{#1}
+	
+}
+
+
+% Formats a dialogue excert of text, appending the necessary dashes
+% The first parameter -- optional -- indicates the dash position and can be l(eft), r(ight) and b(oth).
+% The second parameter is what the characte is speaking.
+% \speak[b]{Kill them all!}
+\newcommand{\speak}[2][l]{
+    \ifthenelse{\equal{#1}{l}}{--- #2}
+    {\ifthenelse{\equal{#1}{b}}{--- #2 ---}{#2 ---}}
+}
+
+% Formats a think excert of text, appending the necessary dashes
+% The first parameter -- optional -- indicates the dash position and can be l(eft), r(ight) and b(oth).
+% The second parameter is what the characte is thinking.
+% \think[b]{What should I do?}
+\newcommand{\think}[2][l]{
+    \ifthenelse{\equal{#1}{l}}{--- \textit{``#2``}}
+    {\ifthenelse{\equal{#1}{b}}{--- \textit{``#2``} ---}{\textit{``#2``} ---}}
+}
