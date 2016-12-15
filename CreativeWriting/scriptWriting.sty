@@ -1,0 +1,99 @@
+% ·▄▄▄▄  ▄▄▄ . ▌ ▐· ▄▄▄·  ▐ ▄ ▄▄▄ . ▄▄▄·  ▐ ▄ ·▄▄▄▄        
+% ██▪ ██ ▀▄.▀·▪█·█▌▐█ ▀█ •█▌▐█▀▄.▀·▐█ ▀█ •█▌▐███▪ ██ ▪     
+% ▐█· ▐█▌▐▀▀▪▄▐█▐█•▄█▀▀█ ▐█▐▐▌▐▀▀▪▄▄█▀▀█ ▐█▐▐▌▐█· ▐█▌ ▄█▀▄ 
+% ██. ██ ▐█▄▄▌ ███ ▐█ ▪▐▌██▐█▌▐█▄▄▌▐█ ▪▐▌██▐█▌██. ██ ▐█▌.▐▌
+% ▀▀▀▀▀•  ▀▀▀ . ▀   ▀  ▀ ▀▀ █▪ ▀▀▀  ▀  ▀ ▀▀ █▪▀▀▀▀▀•  ▀█▄▀▪
+%
+% scriptWriting.sty
+% Copyright 2016 Eduardo Fernandes <edu.fernandes.pt@gmail.com>
+%
+% Licensed under a Creative Commons Attribution 4.0 International License.
+% See https://creativecommons.org/licenses/by/4.0/
+%
+% Example:
+% \usepackage{creativeWriting}
+%
+
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{scriptWriting}[2016/12/25 scriptWriting]
+
+% Allows the usage of UTF8 characters
+\usepackage[utf8]{inputenc}
+
+% Allows the usage of horizontal fill lines
+\usepackage{xhfill}
+
+% Counters to keep track of acts and scenes
+\newcounter{countActs}
+\newcounter{countScenes}
+
+% ●▬▬▬▬▬๑۩ Custom commands ۩๑▬▬▬▬▬●
+
+% Changes all the text to uppercase
+% \slugnize{This should be in UPPER}
+\newcommand{\slugnize}[1]{
+    \expandafter\MakeUppercase\expandafter{#1}
+}
+
+% Creates a new act slug.
+% This should not be used directly, but inside \prologue, \epilogue and \act
+\newcommand{\makeAct}[1]{
+    \clearpage
+    \begin{center}
+        \slugnize{\huge\textbf{#1}}
+    \end{center}
+    \vspace{10mm}
+}
+
+% Creates a new prologue slug.
+% \prologue
+\newcommand{\prologue}{
+    \makeAct{Prólogo}
+}
+
+% Creates a new act slug.
+% \act
+\newcommand{\act}{
+    \stepcounter{countActs}
+    \makeAct{Acto \arabic{countActs}}
+}
+
+% Creates a new epilogue slug.
+% \epilogue
+\newcommand{\epilogue}{
+    \makeAct{Epílogo}
+}
+
+% Creates an internal scene slug.
+% \sceneInt{Whaley House, Bedroom, Dawn)
+\newcommand{\sceneInt}[1]{
+    \stepcounter{countScenes}
+    \begin{center}
+        \line(1,0){50}
+        \slugnize{\textbf{ \arabic{countScenes}) Int. #1}}\hrulefill    
+    \end{center}    
+}
+
+% Creates an external scene slug.
+% \sceneInt{Whaley House, Garden, Afternoon)
+\newcommand{\sceneExt}[1]{
+    \stepcounter{countScenes}
+    \begin{center}
+        \line(1,0){50}
+        \slugnize{\textbf{ \arabic{countScenes}) Ext. #1}}\hrulefill    
+    \end{center}    
+}
+
+% Creates a formatted spoken part of a dialogue, in the right side of the page
+% \speak{John Doe}{(worried)I shouldn't be doing this}
+\newcommand{\speak}[2]{
+    \hfill
+    \parbox{0.45\textwidth}{\capitilize{\textbf{#1}}\\#2\\}
+}
+
+% Contextualizes a dialogue, in the left side of the page
+% \context{John Doe is about to jump from a 3m high wall}
+\newcommand{\context}[1]{
+    \parbox{0.45\textwidth}{#1\\}
+    \hfill
+}
