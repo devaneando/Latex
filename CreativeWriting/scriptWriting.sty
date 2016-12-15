@@ -70,7 +70,7 @@
     \stepcounter{countScenes}
     \begin{center}
         \line(1,0){50}
-        \slugnize{\textbf{ \arabic{countScenes}) Int. #1}}\hrulefill    
+        \slugnize{\textbf{ \arabic{countScenes}) Int.\hspace{0.3cm} #1}}\hrulefill    
     \end{center}    
 }
 
@@ -80,7 +80,7 @@
     \stepcounter{countScenes}
     \begin{center}
         \line(1,0){50}
-        \slugnize{\textbf{ \arabic{countScenes}) Ext. #1}}\hrulefill    
+        \slugnize{\textbf{ \arabic{countScenes}) Ext.\hspace{0.3cm} #1}}\hrulefill    
     \end{center}    
 }
 
@@ -88,7 +88,9 @@
 % \speak{John Doe}{(worried)I shouldn't be doing this}
 \newcommand{\speak}[2]{
     \hfill
-    \parbox{0.45\textwidth}{\capitilize{\textbf{#1}}\\#2\\}
+    \parbox{0.45\textwidth}{
+        \slugnize{\textbf{#1}}\\#2\\
+    }
 }
 
 % Contextualizes a dialogue, in the left side of the page
