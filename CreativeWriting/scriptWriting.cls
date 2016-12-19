@@ -23,6 +23,7 @@
 
 \LoadClass[12pt,a4paper,oneside]{book}
 \usepackage{scriptWriting}
+\usepackage{creativeImages}
 
 % ●▬▬▬▬▬๑۩ Page options ۩๑▬▬▬▬▬●
 

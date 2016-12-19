@@ -22,10 +22,10 @@
 
 % Definies the allowed path for images
 \graphicspath{
-    {images/}
     {chapters/images/}
     {characters/images/}
     {concepts/images}
+    {images/}
     {items/images}
     {locales/images}
     {miscellany/images}
@@ -33,24 +33,54 @@
     {synopsis/images}
 }
 
-\newcommand{\imgHorizontal}[1]{
+% Prints a horizontal image, centered on the page, resizing it to the first optional parameter
+% \imgHorizontal[7]{myImage}
+\newcommand{\imgHorizontal}[2][7]{
     \begin{figure}[h]
         \begin{center}
-            \includegraphics[width=7cm,keepaspectratio]{#1}
+            \includegraphics[width=#1cm,keepaspectratio]{#2}
         \end{center}
     \end{figure}
 }
 
-\newcommand{\imgVertical}[1]{
+% Prints a vertical image, centered on the page, resizing it to the first optional parameter
+% \imgVertical[7]{myImage}
+\newcommand{\imgVertical}[2][7]{
     \begin{figure}[h]
         \begin{center}
-            \includegraphics[height=7cm,keepaspectratio]{#1}
+            \includegraphics[height=#1cm,keepaspectratio]{#2}
         \end{center}
     \end{figure}
 }
 
-\newcommand{\wImgHorizontal}[1]{
-    \begin{wrapfigure}{l}{7cm}
-        \includegraphics[7cm]{#1}
+% Prints a left side wrapped horizontal image
+% \wlImgHorizontal[7]{myImage}
+\newcommand{\wlImgHorizontal}[2][7]{
+    \begin{wrapfigure}{L}{#1cm}
+        \includegraphics[width=#1cm,keepaspectratio]{#2}
+    \end{wrapfigure}
+}
+
+% Prints a right side wrapped horizontal image
+% \wrImgHorizontal[7]{myImage}
+\newcommand{\wrImgHorizontal}[2][7]{
+    \begin{wrapfigure}{R}{#1cm}
+        \includegraphics[width=#1cm,keepaspectratio]{#2}
+    \end{wrapfigure}
+}
+
+% Prints a left side wrapped vertical image
+% \wlImgVertical[7]{myImage}
+\newcommand{\wlImgVertical}[2][7]{
+    \begin{wrapfigure}{L}{#1cm}
+        \includegraphics[height=#1cm,keepaspectratio]{#2}
+    \end{wrapfigure}
+}
+
+% Prints a right side wrapped vertical image
+% \wlImgVertical[7]{myImage}
+\newcommand{\wrImgVertical}[2][7]{
+    \begin{wrapfigure}{R}{#1cm}
+        \includegraphics[height=#1cm,keepaspectratio]{#2}
     \end{wrapfigure}
 }
