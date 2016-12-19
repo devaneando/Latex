@@ -1,0 +1,56 @@
+% ·▄▄▄▄  ▄▄▄ . ▌ ▐· ▄▄▄·  ▐ ▄ ▄▄▄ . ▄▄▄·  ▐ ▄ ·▄▄▄▄        
+% ██▪ ██ ▀▄.▀·▪█·█▌▐█ ▀█ •█▌▐█▀▄.▀·▐█ ▀█ •█▌▐███▪ ██ ▪     
+% ▐█· ▐█▌▐▀▀▪▄▐█▐█•▄█▀▀█ ▐█▐▐▌▐▀▀▪▄▄█▀▀█ ▐█▐▐▌▐█· ▐█▌ ▄█▀▄ 
+% ██. ██ ▐█▄▄▌ ███ ▐█ ▪▐▌██▐█▌▐█▄▄▌▐█ ▪▐▌██▐█▌██. ██ ▐█▌.▐▌
+% ▀▀▀▀▀•  ▀▀▀ . ▀   ▀  ▀ ▀▀ █▪ ▀▀▀  ▀  ▀ ▀▀ █▪▀▀▀▀▀•  ▀█▄▀▪
+%
+% creativeImages.sty
+% Copyright 2016 Eduardo Fernandes <edu.fernandes.pt@gmail.com>
+%
+% Licensed under a Creative Commons Attribution 4.0 International License.
+% See https://creativecommons.org/licenses/by/4.0/
+%
+% Example:
+% \usepackage{creativeImages}
+%
+
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{creativeImages}[2016/12/17 creativeImages]
+
+% Allows image insertion
+\usepackage{graphicx,wrapfig}
+
+% Definies the allowed path for images
+\graphicspath{
+    {images/}
+    {chapters/images/}
+    {characters/images/}
+    {concepts/images}
+    {items/images}
+    {locales/images}
+    {miscellany/images}
+    {storyline/images}
+    {synopsis/images}
+}
+
+\newcommand{\imgHorizontal}[1]{
+    \begin{figure}[h]
+        \begin{center}
+            \includegraphics[width=7cm,keepaspectratio]{#1}
+        \end{center}
+    \end{figure}
+}
+
+\newcommand{\imgVertical}[1]{
+    \begin{figure}[h]
+        \begin{center}
+            \includegraphics[height=7cm,keepaspectratio]{#1}
+        \end{center}
+    \end{figure}
+}
+
+\newcommand{\wImgHorizontal}[1]{
+    \begin{wrapfigure}{l}{7cm}
+        \includegraphics[7cm]{#1}
+    \end{wrapfigure}
+}

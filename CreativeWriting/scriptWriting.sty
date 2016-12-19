@@ -23,6 +23,12 @@
 % Allows the usage of horizontal fill lines
 \usepackage{xhfill}
 
+% Allows the usage of images
+\usepackage{graphicx}
+\usepackage{wrapfig}
+
+% ●▬▬▬▬▬๑۩ Custom counters ۩๑▬▬▬▬▬●
+
 % Counters to keep track of acts and scenes
 \newcounter{countActs}
 \newcounter{countScenes}
@@ -98,4 +104,8 @@
 \newcommand{\context}[1]{
     \parbox{0.45\textwidth}{#1\\}
     \hfill
+}
+
+\newcommand{\wrapImage}[1]{
+
 }
