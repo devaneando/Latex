@@ -21,13 +21,13 @@
 
 % ●▬▬▬▬▬๑۩ Base class ۩๑▬▬▬▬▬●
 
-\LoadClass[12pt,a4paper,oneside]{book}
+\LoadClass[12pt,a4paper,oneside,hidelinks]{book}
 \usepackage{creativeWriting}
 
 % ●▬▬▬▬▬๑۩ Page options ۩๑▬▬▬▬▬●
 
 %Sets single line spacing
-\usepackage[singlespacing]{setspace}
+\usepackage[onehalfspacing]{setspace}
 
 % Disables paragraph identation
 \setlength{\parindent}{0cm}
@@ -62,7 +62,7 @@
 \usepackage{ae,aecompl}
 
 % Allows to use hyperlinks
-\usepackage{hyperref}
+\usepackage[hidelinks]{hyperref}
 
 % Sets the document to use Latin Modern fonts
 \usepackage{lmodern}
