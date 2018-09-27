@@ -16,7 +16,7 @@ Clone the repository
 
     cd ${HOME}/texmf/tex/
     # It's important clone the repository with "latex", with lower cases
-    git clone git@github.com:psicofrenia/Latex.git latex
+    git clone git@github.com:devaneando/Latex.git latex
   
 ## License
 
